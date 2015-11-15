@@ -6,7 +6,12 @@ class PaymentsController < ApplicationController
 
   def index
     loan = Loan.find(params["loan_id"])
-    render json: loan.payments.all, methods: :outstanding_balance
+    render json: loan.payments.all
+  end
+
+  def show
+    payment = Payment.find(params["id"])
+    render json: payment
   end
 
   def create
